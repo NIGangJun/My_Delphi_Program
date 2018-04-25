@@ -1,0 +1,485 @@
+unit Banzu;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB, Vcl.Buttons,
+  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.DBCtrls;
+
+type
+  TForm4 = class(TForm)
+    Label1: TLabel;
+    DBGrid2: TDBGrid;
+    Panel1: TPanel;
+    Edit1: TEdit;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    ADOQuery1: TADOQuery;
+    ADOQuery2: TADOQuery;
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
+    DataSource2: TDataSource;
+    ListBox1: TListBox;
+    ListBox2: TListBox;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit6: TEdit;
+    Edit7: TEdit;
+    ListBox3: TListBox;
+    ADOQuery3: TADOQuery;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    SpeedButton8: TSpeedButton;
+    SpeedButton9: TSpeedButton;
+    Edit2: TEdit;
+    Edit5: TEdit;
+    Edit8: TEdit;
+    procedure BanZuMiniTbale(Sender: TOBject);
+    procedure FormShow(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);                                     //ComboBox添加数据
+    Function BMID():String;
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
+    procedure SpeedButton9Click(Sender: TObject);
+    procedure BtnEnAble(Sender: TObject);
+    procedure BtnDisAble(Sender: TObject);
+    procedure PeopleAll(Sender: TObject);  //显示员工姓名
+    procedure IDAll(Sender: TObject);      //显示员工id
+    procedure DBGrid2DblClick(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
+    procedure ComboBox2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+  BothBanzuID: String;   //提取班组ID全局变量
+  BothBanzuName : String; //提取班组name全局变量
+
+implementation
+//调用其他单元
+Uses
+  LogIn,Process,Product,Human,PrintExcel,Log,Password;
+{$R *.dfm}
+
+procedure TForm4.PeopleAll(Sender: TObject);
+var
+  I: Integer;
+begin
+  ADOQuery3.SQL.Text := 'Select *From human';
+  ADOQuery3.Active := True;
+  ListBox2.Items.Clear;
+  for I := 1 to ADOQuery3.RecordCount do
+    begin
+      ADOQuery3.RecNo := I;
+      ListBox2.Items.Add(ADOQuery3.FieldByName('name').AsString);
+    end;
+end;
+
+procedure TForm4.IDAll(Sender: TObject);
+var
+  I: Integer;
+begin
+  ADOQuery3.SQL.Text := 'Select *From human';
+  ADOQuery3.Active := True;
+  ListBox3.Items.Clear;
+  for I := 1 to ADOQuery3.RecordCount do
+    begin
+      ADOQuery3.RecNo := I;
+      ListBox3.Items.Add(ADOQuery3.FieldByName('id').AsString);
+    end;
+end;
+
+//按钮使能
+procedure TForm4.BtnEnAble(Sender: TObject);
+begin
+  {除了保存取消按钮，其余的都使能}
+  SpeedButton1.Enabled := True;
+  SpeedButton2.Enabled := True;
+  SpeedButton3.Enabled := True;
+  SpeedButton4.Enabled := True;
+  SpeedButton5.Enabled := True;
+  SpeedButton6.Enabled := True;
+  SpeedButton7.Enabled := True;
+  SpeedButton8.Enabled := False;
+  SpeedButton9.Enabled := False;
+  Edit1.Enabled := False;
+  DBGrid1.Enabled := False;
+end;
+
+//取消按钮使能
+procedure TForm4.BtnDisAble(Sender: TObject);
+begin
+  {除了保存取消按钮，其余的都取消使能}
+  SpeedButton1.Enabled := False;
+  SpeedButton2.Enabled := False;
+  SpeedButton3.Enabled := False;
+  SpeedButton4.Enabled := False;
+  SpeedButton5.Enabled := False;
+  SpeedButton6.Enabled := False;
+  SpeedButton7.Enabled := False;
+  SpeedButton8.Enabled := True;
+  SpeedButton9.Enabled := True;
+  Edit1.Enabled := True;
+  DBGrid1.Enabled := False;
+end;
+
+//班组对应人员子表
+procedure TForm4.BanZuMiniTbale(Sender: TObject);
+Var
+  BanZuID:String;      //提取班组ID号
+begin
+  //先取出班组ID号
+  BanZuID := ADOQuery1.FieldByName('banzunum').AsString;
+  try
+    ADOQuery2.SQL.Text := 'Select *From banzu' + BanzuID;
+    ADOQuery2.Active := True;
+  except
+    ADOQuery2.SQL.Text := 'Create Table banzu' + BanzuID +'(banzunum VarChar(100),banzuname VarChar(100),'
+                                                            +'name VarChar(100),id VarChar(100),'
+                                                            +'permission VarChar(100),I Int Auto_Increment Primary Key)';
+    ADOQuery2.ExecSQL;
+  end;
+end;
+
+//自动编码班组流水号
+Function TForm4.BMID():String;
+Var
+  Num:String;
+  L:Integer;
+  S:String;
+begin
+  ADOquery1.Last;                                                              //需要指向最后一条记录
+  if ADOQuery1.FieldByName('banzunum').Value=NULL then
+    begin
+      Num := '001';
+    end
+  else
+    begin                                             //任务号前两位取出，将后四位进行赋值加1
+      L := strtoint(ADOQuery1.FieldByName('banzunum').Value);         //先取出后三位值转化为int型，循环变量+1后，再转化为str
+      L := L + 1;                                                              //并赋值，通过while...do执行位数的上加
+      Num := inttostr(L);
+      while Length(Num)<3 do                        //自动加'0'
+        begin
+          Num := '0' + Num
+        end;
+    end;
+  Result := Num;
+end;
+
+//窗体显示
+procedure TForm4.FormShow(Sender: TObject);
+Var
+  I: Integer;
+begin
+  //遍历任务表取出所有任务和任务id到两个下拉框
+  try
+    ADOQuery1.SQL.Text :='Select *From product';
+    ADOQuery1.Active := True;
+    ADOQuery1.Close;
+    BtnEnAble(Sender);
+    PeopleAll(Sender);
+    IDAll(Sender);
+  except
+  //为异常，特作Try..except..end处理
+  end;
+end;
+
+
+procedure TForm4.SpeedButton1Click(Sender: TObject);
+Var
+  DuctID: String;//取得任务ID后三位选择班组表
+  BanzuID: String;
+begin
+  {新增班组}
+  try
+    BanzuID := BMID();
+    DuctID := Copy(ComboBox2.Text,3,3);
+    ADOQuery1.SQL.Text := 'Select *From banzu'+DuctID;
+    ADOQuery1.Active := True;
+    if Edit1.Text = '' then
+      begin
+        Showmessage('请输入班组名');
+      end;
+    BtnDisAble(Sender);
+    Edit1.SetFocus;
+    ADOQuery1.Append;
+    Edit2.Text := BanzuID;
+  except
+  //为异常，特作Try..except..end处理
+  end;
+end;
+
+procedure TForm4.SpeedButton2Click(Sender: TObject);
+begin
+  {修改}
+  try
+    if ADOQuery1.RecordCount < 1 then
+      begin
+        Showmessage('请先新增班组后再进行修改操作！');
+      end
+    else
+      begin
+        Edit1.Text := ADOQuery1.FieldByName('banzuname').AsString;
+        Edit2.Text := ADOQuery1.FieldByName('banzunum').AsString;
+        if Edit1.Text = '' then
+          begin
+            Showmessage('请输入班组名');
+          end
+        else
+          begin
+            ADOQuery1.Edit;
+          end;
+      end;
+    BtnDisAble(Sender);
+  except
+  //为异常，特作Try..except..end处理
+  end;
+
+end;
+
+procedure TForm4.SpeedButton3Click(Sender: TObject);
+Var
+  BanzuID: String; //获取班组号id
+begin
+  {删除}
+  if Application.MessageBox('当前操作会删除此班组对应员工子表，确认是否删除？','警告',MB_YESNO) = IDYES then
+    begin
+      try
+        //删除班组对应员工子表，再清除班组信息
+        BanzuID :=ADOQuery1.FieldByName('banzunum').AsString;
+        ADOQuery2.SQL.Text := 'Drop Table banzu'+BanzuID;
+        ADOQuery2.ExecSQL;
+        ADOQuery1.Delete;
+        //Showmessage(ADOQuery1.SQL.Text);
+      except
+      //为异常，特作Try..except..end处理
+        Showmessage('删除异常');
+      end;
+    end;
+end;
+
+procedure TForm4.SpeedButton4Click(Sender: TObject);
+Var
+  I:integer;
+  BanzuID:String;
+begin
+  {移除列表员工}
+  try
+    BanzuID := BothBanzuID;
+    for I := 0 to listbox1.Items.Count - 1 do
+      begin
+        if listbox1.Selected[I] = true then
+          begin
+            ADOQuery2.SQL.Text := 'select *from banzu'+BothBanzuID+' where name like '+''''+'%'+Trim(listbox1.Items[I])+'%'+'''';
+            ADOQuery2.Open;
+            ADOQuery2.Delete;
+          end;
+      end;
+    ADOQuery2.SQL.Text := 'Select *From banzu' + BanzuID;
+    ADOQuery2.Active := True;
+    listbox1.DeleteSelected;
+  except
+  //为异常，特作Try..except..end处理
+  end;
+end;
+
+procedure TForm4.SpeedButton5Click(Sender: TObject);
+var
+  I: Integer;
+  H: integer;
+  C:  array of String;    //定义数组变量
+  L: Integer;
+  G: Integer;
+  BanzuID : String;
+  BanzuName: String;
+begin
+  {逐个添加列表员工}
+  try
+  BanzuID:=BothBanzuID;
+  BanzuName:=BothBanzuName;
+  //定义数组长度
+  SetLength(C,listbox1.Items.Count);
+  for L := 0 to listbox1.Items.Count - 1 do
+    begin
+      C[L]:= Listbox1.Items[L];
+    end;
+  //清除表人员
+  Listbox1.Items.Clear;
+  for G := 0 to high(C) do
+    begin
+     Listbox1.Items.Add(C[G]);
+    end;
+  //新增到数据表
+  for I := 0 to listbox2.Items.Count - 1 do
+    begin
+      H:=I;
+      if ListBox2.Selected[I] = True then
+        begin
+          ListBox3.Selected[H] := ListBox2.Selected[I];
+          ADOQuery2.Append;
+          ADOQuery2.FieldByName('banzunum').AsString := BanzuID;
+          ADOQuery2.FieldByName('banzuname').AsString := BanzuName;
+          ADOQuery2.FieldByName('name').AsString := listbox2.Items[I];
+          ADOQuery2.FieldByName('id').AsString := listbox3.Items[H];
+          ADOQuery2.FieldByName('permission').AsString := '0';
+          ADOQuery2.Post;
+          Listbox1.Items.Add(listbox2.Items[I]);
+          listbox2.Selected[I] := False;
+          listbox3.Selected[H] := False;
+        end;
+    end;
+  except
+  //为异常，特作Try..except..end处理
+  end;
+end;
+
+procedure TForm4.SpeedButton6Click(Sender: TObject);
+var
+  I: Integer;
+begin
+  {全部移除}
+  try
+  for I := 0 to listbox1.Items.Count - 1 do
+    begin
+      ADOQuery2.SQL.Text := 'select *from banzu'+BothBanzuID+' where name like '+''''+'%'+Trim(listbox1.Items[I])+'%'+'''';
+      ADOQuery2.Open;
+      ADOQuery2.Delete;
+      ADOQuery2.Close;
+      ADOQuery2.Open;
+    end;
+  listbox1.Clear;
+  except
+  //为异常，特作Try..except..end处理
+  end;
+end;
+
+procedure TForm4.SpeedButton7Click(Sender: TObject);
+var
+  //给人员库两个listbox定义数量
+  I: Integer;
+  H: Integer;
+  BanzuID : String;
+  BanzuName: String;
+begin
+  {全部添加按钮}
+  try
+  BanzuID:=BothBanzuID;
+  BanzuName:=BothBanzuName;
+  for I := 0 to ADOQuery3.RecordCount - 1 do
+    begin
+      H:=I;
+      ADOQuery2.Append;
+      ADOQuery2.FieldByName('banzunum').AsString := BanzuID;
+      ADOQuery2.FieldByName('banzuname').AsString := BanzuName;
+      ADOQuery2.FieldByName('name').AsString := listbox2.Items[I];
+      ADOQuery2.FieldByName('id').AsString := listbox3.Items[H];
+      ADOQuery2.FieldByName('permission').AsString := '0';
+      ADOQuery2.Post;
+      Listbox1.Items.Add(listbox2.Items[I]);
+    end;
+  except
+  //为异常，特作Try..except..end处理
+  end;
+end;
+
+procedure TForm4.SpeedButton8Click(Sender: TObject);
+Var
+  I :Integer;
+begin
+  {保存操作}
+  if Application.MessageBox('确认保存?','提示',MB_YESNO) = IDYES then
+    begin
+      ADOQuery1.FieldByName('banzunum').AsString := Edit2.Text;
+      ADOQuery1.FieldByName('banzuname').AsString := Edit1.Text;
+      ADOQuery1.Post;
+      Showmessage('保存成功！');
+      //新增班组对应员工表
+      BanZuMiniTbale(Sender);
+      { 修改完成后应该将班组对应人员子表全部修改
+
+      可以执行删除以后，再新建；也可以直接遍历修改数据！}
+      //遍历操作
+      try
+        for I := 1 to ADOQuery2.RecordCount do
+          begin
+            ADOQuery2.RecNo := I;
+            ADOQuery2.Edit;
+            ADOQuery2.FieldByName('banzuname').AsString := Edit1.Text;
+            ADOQuery2.Post;
+          end;
+      except
+        //Showmessage('修改修改');
+      end;
+    end
+  else
+    begin
+      ADOQuery1.Cancel;
+    end;
+  Edit1.Text := '';
+  BtnEnAble(Sender);
+end;
+
+procedure TForm4.SpeedButton9Click(Sender: TObject);
+begin
+  {取消操作}
+  try
+    ADOQuery1.Cancel;
+    BtnEnAble(Sender);
+  except
+
+  end;
+end;
+
+//使得id下拉框取到任务id
+procedure TForm4.ComboBox2Click(Sender: TObject);
+begin
+
+end;
+
+//双击DBGrid进行班组子表管理
+procedure TForm4.DBGrid2DblClick(Sender: TObject);
+Var
+  I: Integer; //获取班组号id
+  BanzuID :String;
+  BanzuName :String;
+begin
+  try
+    BanzuID := ADOQuery1.FieldByName('banzunum').AsString;
+    BanzuName := ADOQuery1.FieldByName('banzuname').AsString;
+    try
+      ADOQuery2.SQL.Text := 'Select *From banzu' + BanzuID;
+      ADOQuery2.Active := True;
+    except
+      ADOQuery2.SQL.Text := 'Create Table banzu' + BanzuID +'(banzunum VarChar(100),banzuname VarChar(100),'
+                                                            +'name VarChar(100),id VarChar(100),'
+                                                            +'permission VarChar(100),I Int Auto_Increment Primary Key)';
+      ADOQuery2.ExecSQL;
+    end;
+    Listbox1.Clear;
+    for I := 1 to ADOQuery2.RecordCount do
+      begin
+        ADOQuery2.RecNo := I;
+        Listbox1.Items.Add(ADOQuery2.FieldByName('name').AsString);
+      end;
+  except
+  //为异常，特作Try..except..end处理
+  end;
+  BothBanzuID := BanzuID;
+  BothBanzuName := BanzuName;
+  Edit5.Text := BanzuID;
+  Edit8.Text := BanzuName;
+end;
+
+end.

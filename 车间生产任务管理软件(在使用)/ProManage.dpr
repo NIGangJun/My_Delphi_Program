@@ -1,0 +1,30 @@
+program ProManage;
+
+uses
+  Vcl.Forms,
+  LogIn in 'LogIn.pas' {Form1},
+  Product in 'Product.pas' {Form2},
+  Process in 'Process.pas' {Form3},
+  Banzu in 'Banzu.pas' {Form4},
+  Human in 'Human.pas' {Form5},
+  PrintExcel in 'PrintExcel.pas' {Form6},
+  Log in 'Log.pas' {Form7},
+  Password in 'Password.pas' {Form8},
+  BARCODELib_TLB in 'BARCODELib_TLB.pas',
+  Code39 in 'Code39.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TForm4, Form4);
+  Application.CreateForm(TForm5, Form5);
+  Application.CreateForm(TForm6, Form6);
+  Application.CreateForm(TForm7, Form7);
+  Application.CreateForm(TForm8, Form8);
+  Application.Run;
+end.

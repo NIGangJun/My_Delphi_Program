@@ -1,0 +1,421 @@
+unit Process;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls, Vcl.DBCtrls,
+  Vcl.Mask, Vcl.Grids, Vcl.DBGrids, Data.DB, Data.Win.ADODB, Vcl.ComCtrls,
+  Vcl.ExtCtrls;
+
+type
+  TForm3 = class(TForm)
+    Label2: TLabel;
+    Label1: TLabel;
+    ADOQuery1: TADOQuery;
+    DataSource1: TDataSource;
+    DBGrid2: TDBGrid;
+    GroupBox1: TGroupBox;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBMemo1: TDBMemo;
+    DBMemo2: TDBMemo;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    ListBox1: TListBox;
+    ADOQuery3: TADOQuery;
+    Panel1: TPanel;
+    Label21: TLabel;
+    DBEdit8: TDBEdit;
+    ComboBox3: TComboBox;
+    Label3: TLabel;
+    DBEdit9: TDBEdit;
+    procedure BtnEnAble(Sender: TObject);
+    procedure BtnDisAble(Sender: TObject);
+    procedure EnAble(Sender: TObject);
+    procedure DisAble(Sender: TObject);
+    Function BMID():String;
+    procedure BanzuShow(Sender: TObject);
+    //赋值上传到EDIT
+    procedure BtnCopy(Sender: TObject);
+    procedure CessminiTable(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure DBGrid2DblClick(Sender: TObject);
+    procedure ClearEdit(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
+    procedure ComboBox1Click(Sender: TObject);
+    procedure BtnPaste(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
+    procedure DBGrid2DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+//调用其他单元
+Uses
+  LogIn,Product,BanZu;
+
+{$R *.dfm}
+
+//按钮使能
+procedure TForm3.BtnEnAble(Sender: TObject);
+begin
+  {除了保存取消按钮，其余的都使能}
+  SpeedButton1.Enabled := True;
+  SpeedButton2.Enabled := True;
+  SpeedButton5.Enabled := True;
+  SpeedButton6.Enabled := True;
+  SpeedButton3.Enabled := False;
+  SpeedButton4.Enabled := False;
+end;
+
+//取消按钮使能
+procedure TForm3.BtnDisAble(Sender: TObject);
+var
+  I: Integer;
+begin
+  {除了保存取消按钮，其余的都取消使能}
+  SpeedButton1.Enabled := False;
+  SpeedButton2.Enabled := False;
+  SpeedButton5.Enabled := False;
+  SpeedButton6.Enabled := False;
+  SpeedButton3.Enabled := True;
+  SpeedButton4.Enabled := True;
+  for I := 0 to Self.ComponentCount - 1 do
+    begin
+      if Self.Components[I] is TDBEdit then
+        begin
+          ((Self.Components[I]) as TDBEdit).Enabled := False;
+        end;
+    end;
+end;
+
+//使能Edit控件
+procedure TForm3.EnAble(Sender: TObject);
+var
+  I:integer;
+begin
+  for i:=0 to Self.Componentcount - 1   do
+    begin
+      if Self.Components[I] is TEdit then
+        begin
+          ((Self.Components[I]) as TEdit).Enabled := True;
+        end;
+    end;
+  Edit1.Enabled := False;
+  DateTimePicker1.Enabled := True;
+  DateTimePicker2.Enabled := True;
+  DBMemo1.Enabled := True;
+  DBMemo2.Enabled := True;
+  Panel1.Enabled := False;
+  ComboBox3.Enabled := True;
+end;
+
+//取消Edit控件使能属性
+procedure TForm3.DisAble(Sender: TObject);
+var
+  I:integer;
+begin
+  for i:=0 to Self.Componentcount - 1   do
+    begin
+      if Self.Components[I] is TEdit then
+        begin
+          ((Self.Components[I]) as TEdit).Enabled := False;
+        end;
+    end;
+  DateTimePicker1.Enabled := False;
+  DateTimePicker2.Enabled := False;
+  DBMemo1.Enabled := False;
+  DBMemo2.Enabled := False;
+  Panel1.Enabled := True;
+  ComboBox3.Enabled := False;
+end;
+
+procedure TForm3.FormShow(Sender: TObject);
+Var
+  DuctID: String;//取得任务ID后三位进行工序动态建表
+begin
+  //取得任务ID后三位
+  DuctID := Copy(form2.ADOQuery1.FieldByName('proserial').AsString,3,3);
+  DisAble(Sender);
+  DatetimePicker1.date:=now;
+  DatetimePicker2.date:=now;
+  try
+    ADOQuery1.SQL.Text :='Select *From process'+DuctID;
+    ADOQuery1.Active := True;
+  except
+    ADOQuery1.SQL.Text :='Create Table process'+DuctID+'(serialcess VarChar(1000),numcess VarChar(1000),'
+                                              +'namecess VarChar(1000),arragecess VarChar(1000),figcess VarChar(1000),'
+                                              +'frockcess VarChar(1000),plansta VarChar(100),'
+                                              +'banzuname VarChar(1000),banzunum VarChar(100),'
+                                              +'planpeo VarChar(1000),reallpeo VarChar(100),checkcess varchar(100),'
+                                              +'planfin VarChar(100),reallsta VarChar(100),reallfin VarChar(100),'
+                                              +'number VarChar(10),remark VarChar(100),I Int auto_increment PRIMARY KEY)';
+    ADOQuery1.ExecSQL;
+  end;
+  Label2.Caption := form2.ADOQuery1.FieldByName('proname').AsString;
+  BanzuShow(Sender);
+end;
+
+//自动编码工序流水号
+Function TForm3.BMID():String;
+Var
+  Num:String;
+begin
+  ADOquery1.Last;                                                              //需要指向最后一条记录
+  if ADOQuery1.FieldByName('serialcess').Value=NULL then
+    begin
+      Num := copy(form2.DBGrid1.Columns.Items[0].Field.Value,3,3) + '001';
+    end
+  else
+    begin                                             //任务号前两位取出，将后四位进行赋值加1
+      Num := copy(ADOQuery1.FieldByName('serialcess').Value,1,2)+inttostr(strtoint(copy(ADOQuery1.FieldByName('serialcess').Value,3,4))+1);
+    end;
+  Result := Num;
+end;
+
+//赋值上传到EDIT
+procedure TForm3.BtnCopy(Sender: TObject);
+begin
+  DBEdit1.Text := Edit1.Text ;
+  DBEdit2.Text := Edit2.Text ;
+  DBEdit3.Text := Edit3.Text ;
+  DBEdit4.Text := Edit4.Text ;
+  DBEdit5.Text := Edit5.Text ;
+  DBEdit6.Text := DatetoStr(DateTimePicker1.DateTime) ;
+  DBEdit7.Text := DatetoStr(DateTimePicker2.DateTime) ;
+  DBEdit8.Text := ComboBox3.Text ;
+  DBEdit9.Text := ComboBox1.Text ;
+end;
+
+//将DBEdit值取出保存
+procedure TForm3.BtnPaste(Sender: TObject);
+begin
+  Edit1.Text := DBEdit1.Text;
+  Edit2.Text := DBEdit2.Text;
+  Edit3.Text := DBEdit3.Text;
+  Edit4.Text := DBEdit4.Text;
+  Edit5.Text := DBEdit5.Text;
+  ComboBox3.Text := DBEdit8.Text;
+  ComboBox1.Text := DBEdit9.Text ;
+end;
+
+//每次保存后清除Edit信息
+procedure TForm3.ClearEdit(Sender: TObject);
+var
+  I:integer;
+begin
+  for i:=0 to Self.Componentcount - 1   do
+    begin
+      if Self.Components[I] is TEdit then
+        begin
+          ((Self.Components[I]) as TEdit).Text := '';
+        end;
+    end;
+end;
+
+//为选择班组
+procedure TForm3.ComboBox1Click(Sender: TObject);
+var
+  I: Integer;
+begin
+  combobox2.ItemIndex := combobox1.ItemIndex;
+  ADOQuery3.Close;
+  ADOQuery3.SQL.Text := 'Select *From banzu' + ComboBox2.Text;
+  ADOQuery3.Active := True;
+  Listbox1.Clear;
+  for I := 1 to ADOQuery3.RecordCount do
+    begin
+      ADOQuery3.RecNo := I;
+      Listbox1.Items.Add(ADOQuery3.FieldByName('name').AsString);
+    end;
+end;
+
+procedure TForm3.SpeedButton1Click(Sender: TObject);
+Var
+  Txt: String;
+begin
+  {新增}
+  Txt := BMID();
+  BtnDisAble(Sender);
+  EnAble(Sender);
+  //设置Edit2的焦点
+  Edit2.SetFocus;
+  ADOQuery1.Append;
+  Edit1.Text := Txt;
+  ComboBox3.Text := '未检验';
+end;
+
+procedure TForm3.SpeedButton2Click(Sender: TObject);
+begin
+  {修改}
+  BtnPaste(Sender);
+  BtnDisAble(Sender);
+  EnAble(Sender);
+  Edit2.SetFocus;
+  ADOQuery1.Edit;
+end;
+
+procedure TForm3.SpeedButton3Click(Sender: TObject);
+begin
+  {保存}
+  if Application.MessageBox('确认无误，是否保存？','提示',MB_YESNO) = IDYES then
+    begin
+      if ComboBox1.Text <> '' then
+        begin
+          BtnCopy(Sender);
+          ADOQuery1.FieldByName('number').AsString := '1';
+          ADOQuery1.Post;
+          BtnEnAble(Sender);
+          DisAble(Sender);
+        end
+      else
+        begin
+          Showmessage('当前工序未安排班组，请选择班组！');
+        end;
+      try
+        //新增工序子表
+        CessminiTable(Sender);
+      except
+        Showmessage('数据拉取失败，请联系工程人员！');
+      end;
+    end;
+  ClearEdit(Sender);
+end;
+
+procedure TForm3.SpeedButton4Click(Sender: TObject);
+begin
+  {取消}
+  BtnEnAble(Sender);
+  DisAble(Sender);
+  ADOQuery1.Cancel;
+end;
+
+procedure TForm3.SpeedButton5Click(Sender: TObject);
+begin
+  {删除}
+  if Application.MessageBox('当前操作会删除此工序对应班组子表，确认是否删除？','警告',MB_YESNO) = IDYES then
+    begin
+      ADOQuery1.Delete;
+    end;
+end;
+
+procedure TForm3.SpeedButton6Click(Sender: TObject);
+begin
+  {班组管理按钮}
+  Form4.Position := PoScreenCenter;
+  Form4.ShowModal;
+end;
+
+//添加工序对应班组信息
+procedure TForm3.SpeedButton7Click(Sender: TObject);
+begin
+end;
+
+//修改工序对应班组信息
+procedure TForm3.SpeedButton8Click(Sender: TObject);
+begin
+
+end;
+
+//删除工序对应班组信息
+procedure TForm3.CessminiTable(Sender: TObject);
+begin
+
+end;
+
+//双击DBGrid显示工序子表
+procedure TForm3.DBGrid2DblClick(Sender: TObject);
+begin
+  try
+    CessminiTable(Sender);
+
+  except
+    Showmessage('拉取表格失败！');
+  end;
+  BanzuShow(Sender);
+end;
+
+procedure TForm3.DBGrid2DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  if (ADOQuery1.FieldByName('checkcess').AsString = '检验不合格') then
+    begin
+      DbGrid2.Canvas.Brush.color:=clRed;
+      DbGrid2.DefaultDrawColumnCell(Rect,DataCol,Column,State);
+    end
+  else if (ADOQuery1.FieldByName('checkcess').AsString = '检验合格') then
+    begin
+      DbGrid2.Canvas.Brush.color:=clGreen;
+      DbGrid2.DefaultDrawColumnCell(Rect,DataCol,Column,State);
+    end;
+end;
+
+//ComBox添加班组信息
+procedure TForm3.BanzuShow(Sender: TObject);
+Var
+  DuctID: String;//取得任务ID后三位进行工序动态建表
+  I:Integer;
+begin
+  //取得任务ID后三位
+  DuctID := Copy(form2.ADOQuery1.FieldByName('proserial').AsString,3,3);
+  try
+    ADOQuery3.SQL.Text := 'Select *From banzu';
+    ADOQuery3.Active := True;
+    combobox1.Clear;
+    combobox2.Clear;
+    for I := 1 to ADOQuery3.RecordCount do
+      begin
+        ADOQuery3.RecNo := I;
+        if ADOQuery3.FieldByName('banzuname').AsString <> null then
+          begin
+            combobox1.Items.Add(ADOQuery3.FieldByName('banzuname').AsString);
+            combobox2.Items.Add(ADOQuery3.FieldByName('banzunum').AsString);
+          end;
+      end;
+  except
+    Showmessage('当前任务下没有对应班组，请先到班组管理进行编辑信息！');
+  end;
+
+end;
+end.

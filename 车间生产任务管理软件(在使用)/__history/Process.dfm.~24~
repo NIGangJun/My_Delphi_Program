@@ -1,0 +1,636 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = #24037#24207#31649#29702#30028#38754
+  ClientHeight = 850
+  ClientWidth = 1422
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label2: TLabel
+    Left = 565
+    Top = 8
+    Width = 20
+    Height = 37
+    Alignment = taRightJustify
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clBlue
+    Font.Height = -37
+    Font.Name = #21326#25991#34892#26999
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object Label1: TLabel
+    Left = 591
+    Top = 8
+    Width = 304
+    Height = 37
+    Caption = #20219#21153#8212#8212#24037#24207#31649#29702
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clBlue
+    Font.Height = -37
+    Font.Name = #21326#25991#34892#26999
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+  end
+  object SpeedButton6: TSpeedButton
+    Left = 8
+    Top = 12
+    Width = 139
+    Height = 33
+    Caption = #29677#32452#31649#29702
+    OnClick = SpeedButton6Click
+  end
+  object GroupBox1: TGroupBox
+    Left = 8
+    Top = 576
+    Width = 1406
+    Height = 257
+    Caption = #24037#24207#20449#24687#32534#36753
+    TabOrder = 0
+    object Label10: TLabel
+      Left = 56
+      Top = 32
+      Width = 48
+      Height = 16
+      Caption = #27969#27700#21495
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label11: TLabel
+      Left = 248
+      Top = 32
+      Width = 48
+      Height = 16
+      Caption = #24037#24207#21495
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label12: TLabel
+      Left = 456
+      Top = 32
+      Width = 48
+      Height = 16
+      Caption = #24037#24207#21517
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label13: TLabel
+      Left = 1088
+      Top = 32
+      Width = 64
+      Height = 16
+      Caption = #24037#24207#25551#36848
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label14: TLabel
+      Left = 649
+      Top = 32
+      Width = 64
+      Height = 16
+      Caption = #24037#24207#22270#21495
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label16: TLabel
+      Left = 856
+      Top = 32
+      Width = 64
+      Height = 16
+      Caption = #24037#24207#24037#35013
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label17: TLabel
+      Left = 1312
+      Top = 32
+      Width = 32
+      Height = 16
+      Caption = #22791#27880
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label19: TLabel
+      Left = 33
+      Top = 111
+      Width = 128
+      Height = 16
+      Caption = #20219#21153#35745#21010#24320#22987#26102#38388
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label20: TLabel
+      Left = 217
+      Top = 111
+      Width = 128
+      Height = 16
+      Caption = #20219#21153#35745#21010#23436#25104#26102#38388
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object SpeedButton1: TSpeedButton
+      Left = 40
+      Top = 208
+      Width = 121
+      Height = 30
+      Caption = #26032#22686#24037#24207
+      OnClick = SpeedButton1Click
+    end
+    object SpeedButton2: TSpeedButton
+      Left = 201
+      Top = 208
+      Width = 121
+      Height = 30
+      Caption = #20462#25913#24037#24207
+      OnClick = SpeedButton2Click
+    end
+    object SpeedButton3: TSpeedButton
+      Left = 368
+      Top = 208
+      Width = 121
+      Height = 30
+      Caption = #20445#23384#24037#24207
+      OnClick = SpeedButton3Click
+    end
+    object SpeedButton4: TSpeedButton
+      Left = 535
+      Top = 208
+      Width = 121
+      Height = 30
+      Caption = #21462#28040#25805#20316
+      OnClick = SpeedButton4Click
+    end
+    object SpeedButton5: TSpeedButton
+      Left = 702
+      Top = 208
+      Width = 121
+      Height = 30
+      Caption = #21024#38500#24037#24207
+      OnClick = SpeedButton5Click
+    end
+    object Label21: TLabel
+      Left = 432
+      Top = 112
+      Width = 96
+      Height = 16
+      Caption = #24037#24207#26816#39564#29366#24577
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 649
+      Top = 112
+      Width = 64
+      Height = 16
+      Caption = #36873#25321#29677#32452
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object DBEdit1: TDBEdit
+      Left = 40
+      Top = 64
+      Width = 121
+      Height = 21
+      DataField = 'serialcess'
+      DataSource = DataSource1
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 0
+      Visible = False
+    end
+    object DBEdit2: TDBEdit
+      Left = 224
+      Top = 64
+      Width = 121
+      Height = 21
+      DataField = 'numcess'
+      DataSource = DataSource1
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 1
+      Visible = False
+    end
+    object DBEdit3: TDBEdit
+      Left = 424
+      Top = 64
+      Width = 121
+      Height = 21
+      DataField = 'namecess'
+      DataSource = DataSource1
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 2
+      Visible = False
+    end
+    object DBEdit4: TDBEdit
+      Left = 632
+      Top = 64
+      Width = 121
+      Height = 21
+      DataField = 'figcess'
+      DataSource = DataSource1
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 3
+      Visible = False
+    end
+    object DBEdit5: TDBEdit
+      Left = 832
+      Top = 64
+      Width = 121
+      Height = 21
+      DataField = 'frockcess'
+      DataSource = DataSource1
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 4
+      Visible = False
+    end
+    object DBEdit6: TDBEdit
+      Left = 40
+      Top = 152
+      Width = 121
+      Height = 21
+      DataField = 'plansta'
+      DataSource = DataSource1
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 5
+      Visible = False
+    end
+    object DBEdit7: TDBEdit
+      Left = 224
+      Top = 152
+      Width = 121
+      Height = 21
+      DataField = 'planfin'
+      DataSource = DataSource1
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 6
+      Visible = False
+    end
+    object DBMemo1: TDBMemo
+      Left = 1032
+      Top = 64
+      Width = 185
+      Height = 185
+      DataField = 'arragecess'
+      DataSource = DataSource1
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 7
+    end
+    object DBMemo2: TDBMemo
+      Left = 1218
+      Top = 64
+      Width = 185
+      Height = 185
+      DataField = 'remark'
+      DataSource = DataSource1
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 8
+    end
+    object Edit1: TEdit
+      Left = 40
+      Top = 64
+      Width = 121
+      Height = 21
+      Alignment = taCenter
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 9
+    end
+    object Edit2: TEdit
+      Left = 224
+      Top = 64
+      Width = 121
+      Height = 21
+      Alignment = taCenter
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 10
+      TextHint = #35831#36755#20837#24037#24207#21495
+    end
+    object Edit3: TEdit
+      Left = 424
+      Top = 64
+      Width = 121
+      Height = 21
+      Alignment = taCenter
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 11
+      TextHint = #35831#36755#20837#24037#24207#21517
+    end
+    object Edit4: TEdit
+      Left = 632
+      Top = 64
+      Width = 121
+      Height = 21
+      Alignment = taCenter
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 12
+      TextHint = #35831#36755#20837#24037#24207#22270#21495
+    end
+    object Edit5: TEdit
+      Left = 832
+      Top = 64
+      Width = 121
+      Height = 21
+      Alignment = taCenter
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 13
+      TextHint = #35831#36755#20837#24037#24207#24037#35013
+    end
+    object DateTimePicker1: TDateTimePicker
+      Left = 40
+      Top = 152
+      Width = 121
+      Height = 21
+      Date = 43092.768831620370000000
+      Format = 'yyyy-MM-dd HH'#26102
+      Time = 43092.768831620370000000
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 14
+    end
+    object DateTimePicker2: TDateTimePicker
+      Left = 224
+      Top = 152
+      Width = 121
+      Height = 21
+      Date = 43092.768831620370000000
+      Format = 'yyyy-MM-dd HH'#26102
+      Time = 43092.768831620370000000
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 15
+    end
+    object DBEdit8: TDBEdit
+      Left = 424
+      Top = 152
+      Width = 121
+      Height = 21
+      DataField = 'checkcess'
+      DataSource = DataSource1
+      TabOrder = 16
+    end
+    object ComboBox3: TComboBox
+      Left = 424
+      Top = 152
+      Width = 121
+      Height = 21
+      TabOrder = 17
+      Items.Strings = (
+        #26410#26816#39564
+        #26816#39564#21512#26684
+        #26816#39564#19981#21512#26684)
+    end
+    object ComboBox1: TComboBox
+      Left = 632
+      Top = 152
+      Width = 121
+      Height = 21
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 18
+      OnClick = ComboBox1Click
+    end
+    object ComboBox2: TComboBox
+      Left = 632
+      Top = 181
+      Width = 121
+      Height = 21
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      TabOrder = 19
+      Visible = False
+    end
+    object ListBox1: TListBox
+      Left = 832
+      Top = 108
+      Width = 121
+      Height = 141
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      ItemHeight = 13
+      TabOrder = 20
+    end
+  end
+  object Panel1: TPanel
+    Left = 8
+    Top = 51
+    Width = 1406
+    Height = 519
+    TabOrder = 1
+    object DBGrid2: TDBGrid
+      Left = 0
+      Top = 0
+      Width = 1406
+      Height = 519
+      DataSource = DataSource1
+      ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+      ReadOnly = True
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+      OnDrawColumnCell = DBGrid2DrawColumnCell
+      OnDblClick = DBGrid2DblClick
+      Columns = <
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'serialcess'
+          Title.Alignment = taCenter
+          Title.Caption = #27969#27700#21495
+          Width = 80
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'numcess'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#21495
+          Width = 70
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'namecess'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#21517
+          Width = 70
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'arragecess'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#25551#36848
+          Width = 70
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'figcess'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#22270#21495
+          Width = 70
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'frockcess'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#24037#35013
+          Width = 70
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'plansta'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#35745#21010#24320#22987#26102#38388
+          Width = 110
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'reallsta'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#23454#38469#24320#22987#26102#38388
+          Width = 110
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'planpeo'
+          Title.Alignment = taCenter
+          Title.Caption = #24320#22987#26102#38388#8212#8212#21592#24037
+          Width = 110
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'planfin'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#35745#21010#23436#25104#26102#38388
+          Width = 110
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'reallfin'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#23454#38469#23436#25104#26102#38388
+          Width = 110
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'reallpeo'
+          Title.Alignment = taCenter
+          Title.Caption = #32467#26463#26102#38388#8212#8212#21592#24037
+          Width = 110
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'number'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#25968
+          Width = 90
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'checkcess'
+          Title.Alignment = taCenter
+          Title.Caption = #24037#24207#26816#39564
+          Width = 80
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'remark'
+          Title.Alignment = taCenter
+          Title.Caption = #22791#27880
+          Width = 90
+          Visible = True
+        end>
+    end
+  end
+  object ADOQuery1: TADOQuery
+    Connection = Form1.ADOConnection1
+    Parameters = <>
+    Left = 32
+    Top = 128
+  end
+  object DataSource1: TDataSource
+    DataSet = ADOQuery1
+    Left = 128
+    Top = 128
+  end
+  object ADOQuery3: TADOQuery
+    Connection = Form1.ADOConnection1
+    Parameters = <>
+    Left = 879
+    Top = 712
+  end
+end

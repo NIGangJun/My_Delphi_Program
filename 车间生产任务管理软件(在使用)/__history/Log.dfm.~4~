@@ -1,0 +1,125 @@
+object Form7: TForm7
+  Left = 0
+  Top = 0
+  Caption = #26085#24535#26597#30475
+  ClientHeight = 797
+  ClientWidth = 1092
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 395
+    Top = 8
+    Width = 224
+    Height = 33
+    Alignment = taCenter
+    Caption = #24037#21378#25152#26377#20219#21153#26085#24535
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object DBGrid1: TDBGrid
+    Left = 8
+    Top = 47
+    Width = 1075
+    Height = 739
+    DataSource = DataSource1
+    ImeName = #20013#25991'('#31616#20307') - '#30334#24230#36755#20837#27861
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'proname'
+        Title.Alignment = taCenter
+        Title.Caption = #20219#21153#21517
+        Width = 100
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'taifennum'
+        Title.Alignment = taCenter
+        Title.Caption = #21488#20221#21495
+        Width = 100
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'partsname'
+        Title.Alignment = taCenter
+        Title.Caption = #37096#20214#21517#31216
+        Width = 100
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'fignum'
+        Title.Alignment = taCenter
+        Title.Caption = #37096#20214#22270#21495
+        Width = 100
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'procheck'
+        Title.Alignment = taCenter
+        Title.Caption = #23436#25104#24773#20917
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'prostatime'
+        Title.Alignment = taCenter
+        Title.Caption = #20219#21153#24320#22987#26102#38388
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'profintime'
+        Title.Alignment = taCenter
+        Title.Caption = #20219#21153#32467#26463#26102#38388
+        Width = 100
+        Visible = True
+      end>
+  end
+  object DataSource1: TDataSource
+    DataSet = ADOQuery1
+    Left = 395
+    Top = 336
+  end
+  object ADOQuery1: TADOQuery
+    Connection = Form1.ADOConnection1
+    Parameters = <>
+    Left = 323
+    Top = 336
+  end
+  object Timer1: TTimer
+    Enabled = False
+    OnTimer = Timer1Timer
+    Left = 464
+    Top = 336
+  end
+end

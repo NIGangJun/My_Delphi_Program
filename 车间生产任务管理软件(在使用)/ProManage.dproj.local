@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/12/14 09:10:11.000.009,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/12/14 09:55:10.000.560,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2017/12/14 09:56:04.000.552,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\PrintExcel.pas</Transaction>
+    <Transaction>2017/12/14 09:56:09.000.235,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2017/12/15 07:58:44.000.272,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/12/23 11:07:25.000.124,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/12/23 11:26:49.000.406,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.dfm=G:\车间生产任务管理软件(在使用)\LogIn.dfm</Transaction>
+    <Transaction>2017/12/23 11:26:49.000.406,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.pas=G:\车间生产任务管理软件(在使用)\LogIn.pas</Transaction>
+    <Transaction>2017/12/23 11:27:39.000.655,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project1.dproj=G:\车间生产任务管理软件(在使用)\ProManage.dproj</Transaction>
+    <Transaction>2017/12/23 12:20:43.000.378,=G:\车间生产任务管理软件(在使用)\Unit2.pas</Transaction>
+    <Transaction>2017/12/23 12:22:07.000.628,G:\车间生产任务管理软件(在使用)\Unit2.pas=G:\车间生产任务管理软件(在使用)\Product.pas</Transaction>
+    <Transaction>2017/12/23 12:22:07.000.628,G:\车间生产任务管理软件(在使用)\Unit2.dfm=G:\车间生产任务管理软件(在使用)\Product.dfm</Transaction>
+    <Transaction>2017/12/23 17:39:02.000.008,=G:\车间生产任务管理软件(在使用)\Unit3.pas</Transaction>
+    <Transaction>2017/12/23 17:39:17.000.320,G:\车间生产任务管理软件(在使用)\Unit3.dfm=G:\车间生产任务管理软件(在使用)\Process.dfm</Transaction>
+    <Transaction>2017/12/23 17:39:17.000.320,G:\车间生产任务管理软件(在使用)\Unit3.pas=G:\车间生产任务管理软件(在使用)\Process.pas</Transaction>
+    <Transaction>2017/12/23 17:45:04.000.950,=G:\车间生产任务管理软件(在使用)\Unit4.pas</Transaction>
+    <Transaction>2017/12/23 17:45:12.000.790,=G:\车间生产任务管理软件(在使用)\Unit5.pas</Transaction>
+    <Transaction>2017/12/23 17:45:14.000.918,=G:\车间生产任务管理软件(在使用)\Unit6.pas</Transaction>
+    <Transaction>2017/12/23 17:45:17.000.431,=G:\车间生产任务管理软件(在使用)\Unit7.pas</Transaction>
+    <Transaction>2017/12/23 17:45:19.000.802,=G:\车间生产任务管理软件(在使用)\Unit8.pas</Transaction>
+    <Transaction>2017/12/23 17:45:53.000.549,G:\车间生产任务管理软件(在使用)\Unit8.dfm=G:\车间生产任务管理软件(在使用)\Password.dfm</Transaction>
+    <Transaction>2017/12/23 17:45:53.000.549,G:\车间生产任务管理软件(在使用)\Unit8.pas=G:\车间生产任务管理软件(在使用)\Password.pas</Transaction>
+    <Transaction>2017/12/23 17:46:04.000.457,G:\车间生产任务管理软件(在使用)\Unit7.dfm=G:\车间生产任务管理软件(在使用)\Log.dfm</Transaction>
+    <Transaction>2017/12/23 17:46:04.000.457,G:\车间生产任务管理软件(在使用)\Unit7.pas=G:\车间生产任务管理软件(在使用)\Log.pas</Transaction>
+    <Transaction>2017/12/23 17:46:23.000.968,G:\车间生产任务管理软件(在使用)\Unit6.dfm=G:\车间生产任务管理软件(在使用)\PrintExcel.dfm</Transaction>
+    <Transaction>2017/12/23 17:46:23.000.968,G:\车间生产任务管理软件(在使用)\Unit6.pas=G:\车间生产任务管理软件(在使用)\PrintExcel.pas</Transaction>
+    <Transaction>2017/12/23 17:46:33.000.363,G:\车间生产任务管理软件(在使用)\Unit5.dfm=G:\车间生产任务管理软件(在使用)\Human.dfm</Transaction>
+    <Transaction>2017/12/23 17:46:33.000.363,G:\车间生产任务管理软件(在使用)\Unit5.pas=G:\车间生产任务管理软件(在使用)\Human.pas</Transaction>
+    <Transaction>2017/12/23 17:46:40.000.776,G:\车间生产任务管理软件(在使用)\Unit4.dfm=G:\车间生产任务管理软件(在使用)\Banzu.dfm</Transaction>
+    <Transaction>2017/12/23 17:46:40.000.776,G:\车间生产任务管理软件(在使用)\Unit4.pas=G:\车间生产任务管理软件(在使用)\Banzu.pas</Transaction>
+    <Transaction>2017/12/24 18:18:11.000.244,=G:\车间生产任务管理软件(在使用)\Code39.pas</Transaction>
+    <Transaction>2017/12/24 18:18:11.000.224,=G:\车间生产任务管理软件(在使用)\BARCODELib_TLB.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Banzu.pas"/>
+    <File Path="Banzu.dfm"/>
+    <File Path="BARCODELib_TLB.pas"/>
+    <File Path="Code39.pas"/>
+    <File Path="Human.pas"/>
+    <File Path="Human.dfm"/>
+    <File Path="Log.pas"/>
+    <File Path="Log.dfm"/>
+    <File Path="LogIn.pas"/>
+    <File Path="LogIn.dfm"/>
+    <File Path="Password.pas"/>
+    <File Path="Password.dfm"/>
+    <File Path="PrintExcel.pas"/>
+    <File Path="PrintExcel.dfm"/>
+    <File Path="Process.pas"/>
+    <File Path="Process.dfm"/>
+    <File Path="Product.pas"/>
+    <File Path="Product.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

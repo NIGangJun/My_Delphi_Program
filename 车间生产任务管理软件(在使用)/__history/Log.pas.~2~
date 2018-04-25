@@ -1,0 +1,51 @@
+unit Log;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Data.DB, Data.Win.ADODB,
+  Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TForm7 = class(TForm)
+    DBGrid1: TDBGrid;
+    Label1: TLabel;
+    DataSource1: TDataSource;
+    ADOQuery1: TADOQuery;
+    Timer1: TTimer;
+    procedure FormShow(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form7: TForm7;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm7.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Timer1.Enabled := False;
+end;
+
+procedure TForm7.FormShow(Sender: TObject);
+begin
+  ADOQuery1.SQL.Text := 'Select *From rz';
+  ADOQuery1.Active := True;
+  Timer1.Enabled := True;
+end;
+
+procedure TForm7.Timer1Timer(Sender: TObject);
+begin
+  ADOQuery1.Close;
+  ADOQuery1.Open;
+end;
+
+end.
