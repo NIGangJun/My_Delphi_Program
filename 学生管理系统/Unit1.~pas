@@ -1,0 +1,72 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, StdCtrls, DB, ADODB;
+
+type
+  TForm1 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Edit2: TEdit;
+    Edit1: TEdit;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    ADOTable1: TADOTable;
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+uses
+  unit2;
+
+{$R *.dfm}
+
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+begin
+{if (ADOTable1.FieldByName('Name').AsString = Edit1.Text)and
+   (ADOTable1.FieldByName('Password').AsString = Edit2.Text) then
+   begin          }
+    Form1.Hide;
+    Form2.Position:=PoScreenCenter;
+    Form2.Show;
+  // end
+  // else Showmessage('’À∫≈ªÚ√‹¬Î¥ÌŒÛ£°');
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+    Form1.Position:=PoScreenCenter;
+end;
+
+procedure TForm1.SpeedButton2Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+var
+   S:String;
+   S1:String;
+begin
+    S1 := ExtractFilePath(ParamStr(0)) + 'db1.mdb;';
+    S := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=' + S1 + 'Persist Security Info=False';
+    ADOTable1.ConnectionString := S;
+    ADOTable1.Active := True;
+    Form2.ADOTable1.ConnectionString := S;
+    Form2.ADOTable1.Active := True;
+end;
+
+end.

@@ -1,0 +1,503 @@
+object Form2: TForm2
+  Left = 564
+  Top = 112
+  Width = 642
+  Height = 642
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = #23398#29983#31649#29702#31995#32479
+  Color = clSkyBlue
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCloseQuery = FormCloseQuery
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object SpeedButton1: TSpeedButton
+    Left = 496
+    Top = 16
+    Width = 57
+    Height = 25
+    Caption = #27880#38144
+    Flat = True
+    OnClick = SpeedButton1Click
+  end
+  object Label1: TLabel
+    Left = 24
+    Top = 48
+    Width = 41
+    Height = 25
+    AutoSize = False
+    Caption = #22995#21517
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 232
+    Top = 48
+    Width = 41
+    Height = 25
+    AutoSize = False
+    Caption = #23398#21495
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 24
+    Top = 168
+    Width = 57
+    Height = 25
+    AutoSize = False
+    Caption = #36523#20221#35777#21495
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 24
+    Top = 128
+    Width = 57
+    Height = 25
+    AutoSize = False
+    Caption = #31821#36143
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 24
+    Top = 208
+    Width = 57
+    Height = 25
+    AutoSize = False
+    Caption = #26242#20303#22320
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 24
+    Top = 88
+    Width = 57
+    Height = 25
+    AutoSize = False
+    Caption = #32852#31995#30005#35805
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 232
+    Top = 88
+    Width = 57
+    Height = 25
+    AutoSize = False
+    Caption = #22269#31821
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label8: TLabel
+    Left = 24
+    Top = 248
+    Width = 57
+    Height = 25
+    AutoSize = False
+    Caption = #39640#20013#23398#26657
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label9: TLabel
+    Left = 24
+    Top = 328
+    Width = 57
+    Height = 25
+    AutoSize = False
+    Caption = #23398#29983#31616#20171
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 24
+    Top = 288
+    Width = 57
+    Height = 25
+    AutoSize = False
+    Caption = #26366#33719#33635#35465
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label11: TLabel
+    Left = 216
+    Top = 0
+    Width = 217
+    Height = 33
+    AutoSize = False
+    Caption = #23398#29983#31649#29702#31995#32479
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clTeal
+    Font.Height = -32
+    Font.Name = #26999#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label12: TLabel
+    Left = 8
+    Top = 8
+    Width = 65
+    Height = 13
+    AutoSize = False
+    Caption = #29256#26412' Lv1.10'
+  end
+  object SpeedButton9: TSpeedButton
+    Left = 432
+    Top = 16
+    Width = 65
+    Height = 25
+    Caption = #20462#25913#23494#30721
+    Flat = True
+    OnClick = SpeedButton9Click
+  end
+  object SpeedButton10: TSpeedButton
+    Left = 552
+    Top = 16
+    Width = 49
+    Height = 25
+    Caption = #25171#21360
+    Flat = True
+    OnClick = SpeedButton10Click
+  end
+  object DBEdit1: TDBEdit
+    Left = 88
+    Top = 48
+    Width = 105
+    Height = 21
+    DataField = 'Name'
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    TabOrder = 0
+  end
+  object DBEdit2: TDBEdit
+    Left = 280
+    Top = 48
+    Width = 105
+    Height = 21
+    DataField = 'Number'
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    TabOrder = 1
+  end
+  object DBEdit3: TDBEdit
+    Left = 88
+    Top = 168
+    Width = 297
+    Height = 21
+    DataField = 'ID'
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    TabOrder = 2
+  end
+  object DBEdit4: TDBEdit
+    Left = 88
+    Top = 128
+    Width = 297
+    Height = 21
+    DataField = 'Home'
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    TabOrder = 3
+  end
+  object DBEdit5: TDBEdit
+    Left = 88
+    Top = 208
+    Width = 297
+    Height = 21
+    DataField = 'NowHome'
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    TabOrder = 4
+  end
+  object DBEdit6: TDBEdit
+    Left = 88
+    Top = 88
+    Width = 105
+    Height = 21
+    DataField = 'Telephone'
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    TabOrder = 5
+  end
+  object DBEdit7: TDBEdit
+    Left = 280
+    Top = 88
+    Width = 105
+    Height = 21
+    DataField = 'Country'
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    TabOrder = 6
+  end
+  object DBEdit8: TDBEdit
+    Left = 88
+    Top = 248
+    Width = 297
+    Height = 21
+    DataField = 'HighScl'
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    TabOrder = 7
+  end
+  object DBMemo1: TDBMemo
+    Left = 88
+    Top = 328
+    Width = 513
+    Height = 65
+    DataField = 'Ssynopsis'
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    TabOrder = 8
+  end
+  object DBEdit9: TDBEdit
+    Left = 88
+    Top = 288
+    Width = 513
+    Height = 21
+    DataField = 'Honor'
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    TabOrder = 9
+  end
+  object DBGrid1: TDBGrid
+    Left = 24
+    Top = 456
+    Width = 577
+    Height = 137
+    DataSource = DataSource1
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    ReadOnly = True
+    TabOrder = 10
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'Name'
+        Title.Caption = #23398#29983#22995#21517
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Number'
+        Title.Caption = #23398#21495
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Telephone'
+        Title.Caption = #32852#31995#30005#35805
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Country'
+        Title.Caption = #22269#31821
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Home'
+        Title.Caption = #31821#36143
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Title.Caption = #36523#20221#35777#21495
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NowHome'
+        Title.Caption = #26242#20303#22320
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'HighScl'
+        Title.Caption = #39640#20013#23398#26657
+        Width = 90
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Honor'
+        Title.Caption = #26366#33719#33635#35465
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Ssynopsis'
+        Title.Caption = #23398#29983#31616#20171
+        Visible = True
+      end>
+  end
+  object GroupBox1: TGroupBox
+    Left = 24
+    Top = 400
+    Width = 395
+    Height = 49
+    Caption = #24037#20855#26465
+    TabOrder = 11
+    object SpeedButton2: TSpeedButton
+      Left = 8
+      Top = 16
+      Width = 60
+      Height = 25
+      Caption = #26032#22686#20449#24687
+      OnClick = SpeedButton2Click
+    end
+    object SpeedButton3: TSpeedButton
+      Left = 72
+      Top = 16
+      Width = 60
+      Height = 25
+      Caption = #21024#38500#20449#24687
+      OnClick = SpeedButton3Click
+    end
+    object SpeedButton4: TSpeedButton
+      Left = 136
+      Top = 16
+      Width = 60
+      Height = 25
+      Caption = #20462#25913#20449#24687
+      OnClick = SpeedButton4Click
+    end
+    object SpeedButton5: TSpeedButton
+      Left = 264
+      Top = 16
+      Width = 60
+      Height = 25
+      Caption = #21462#28040
+      OnClick = SpeedButton5Click
+    end
+    object SpeedButton6: TSpeedButton
+      Left = 328
+      Top = 16
+      Width = 60
+      Height = 25
+      Caption = #26597#35810
+      OnClick = SpeedButton6Click
+    end
+    object SpeedButton7: TSpeedButton
+      Left = 200
+      Top = 16
+      Width = 60
+      Height = 25
+      Caption = #20445#23384
+      OnClick = SpeedButton7Click
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 432
+    Top = 400
+    Width = 169
+    Height = 49
+    Caption = #27983#35272#26465
+    TabOrder = 12
+    object DBNavigator1: TDBNavigator
+      Left = 8
+      Top = 16
+      Width = 152
+      Height = 25
+      DataSource = DataSource1
+      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+      TabOrder = 0
+    end
+  end
+  object GroupBox3: TGroupBox
+    Left = 415
+    Top = 40
+    Width = 186
+    Height = 233
+    TabOrder = 13
+    object Image1: TImage
+      Left = 0
+      Top = 8
+      Width = 185
+      Height = 225
+      Stretch = True
+    end
+    object SpeedButton8: TSpeedButton
+      Left = 5
+      Top = 8
+      Width = 177
+      Height = 223
+      Caption = #19978#20256#29031#29255
+      Flat = True
+      OnClick = SpeedButton8Click
+    end
+  end
+  object ADOTable1: TADOTable
+    CursorType = ctStatic
+    TableName = 'Student'
+    Left = 88
+  end
+  object DataSource1: TDataSource
+    DataSet = ADOTable1
+    OnDataChange = DataSource1DataChange
+    Left = 128
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    Left = 480
+    Top = 80
+  end
+end
