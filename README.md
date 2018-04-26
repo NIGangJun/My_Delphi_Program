@@ -1,2 +1,2 @@
-# My_Delphi_Program
-this repository is my delphi program of all from i learn it
+# Delphi项目汇总
+从学习此语言以来，所有做过得程序和项目，都会汇总到此仓库。
